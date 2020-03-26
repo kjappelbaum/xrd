@@ -1,6 +1,9 @@
 import { fromJSON } from 'convert-to-jcamp';
 
-import { readBRML } from './reader/reader';
+import { readBRML } from './from/fromBRML';
+
+export { Spectrum } from './Spectrum';
+export { fromBRML } from './from/fromBRML';
 
 /**
  * @param {ArrayBuffer} binary data readed of zipf ile
