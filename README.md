@@ -4,7 +4,7 @@
 [![build status][ci-image]][ci-url]
 [![npm download][download-image]][download-url]
 
-Convert Bruker XRD file to jcamp.
+Read XRD patterns and convert Bruker raw data to jcamp.
 
 ## Installation
 
@@ -13,10 +13,13 @@ Convert Bruker XRD file to jcamp.
 ## Usage
 
 ```js
-import library from 'xrd';
+import Pattern from 'xrd';
 
-const result = library(args);
-// result is ...
+let pattern = Pattern.fromJcamp(jcamp);
+
+let data = pattern.get(); // default to 'twotheta'
+
+let jcamp = pattern.toJcamp();
 ```
 
 ## [API Documentation](https://cheminfo.github.io/xrd/)

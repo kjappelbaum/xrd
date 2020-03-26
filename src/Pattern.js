@@ -1,13 +1,14 @@
 import addJcamp from './addJcamp';
+import toJcamp from './to/toJcamp';
 
 /**
- * Class allowing manipulate a spectrum
- * @class spectrum
- * @param {object} [data={}] - object containing a spectrum
+ * Class allowing manipulate a Pattern
+ * @class Pattern
+ * @param {object} [data={}] - object containing a pattern
  * @param {Array} [data.x=[]] - 2 theta
  * @param {Array} [data.y=[]] - counts
  */
-export class Spectrum {
+export class Pattern {
   constructor() {
     this.flavors = {};
   }
@@ -35,20 +36,24 @@ export class Spectrum {
   }
 
   getXLabel(flavor = 'twotheta') {
-    return this.get(flavor).meta;
+    return this.get(flavor).metadata.xLabel;
   }
 
-  getYLabel() {
-    return 'intensity / a.u.';
+  getYLabel(flavor = 'twotheta') {
+    return this.get(flavor).metadata.yLabel;
   }
 }
 
-Spectrum.prototype.getData = function() {
+Pattern.prototype.getData = function() {
   return { x: this.x, y: this.y };
 };
 
+Pattern.prototype.toJcamp = function() {
+  return toJcamp(this);
+};
+
 function normalizeData(x, y, options = {}) {
-  const { meta = {}, xLabel = 'abc', yLabel = 'def', title = '' } = options;
+  const { metadata } = options;
   if (x && x.length > 1 && x[0] > x[1]) {
     x = x.reverse();
     y = y.reverse();
@@ -59,9 +64,6 @@ function normalizeData(x, y, options = {}) {
   return {
     x,
     y,
-    xLabel,
-    yLabel,
-    title,
-    meta,
+    metadata,
   };
 }

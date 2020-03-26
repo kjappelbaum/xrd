@@ -1,10 +1,13 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { parseDiffractogram } from '../parser/parser';
+import { parseDiffractogram } from '../parser';
 
 describe('parseDiffractogram', () => {
-  const data = readFileSync(join(__dirname, '../../data/RawData0.xml'), 'utf8');
+  const data = readFileSync(
+    join(__dirname, '../../../data/RawData0.xml'),
+    'utf8',
+  );
   it('check the dictionary', () => {
     let result = parseDiffractogram(data);
     expect(result).toHaveProperty('data');

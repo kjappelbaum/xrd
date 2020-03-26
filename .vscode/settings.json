@@ -1,0 +1,8 @@
+{
+    "ltex.ignoreRuleInSentence": [
+        {
+            "rule": "UPPERCASE_SENTENCE_START",
+            "sentence": "^\\Qxrd\\E$"
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 import JSZip from 'jszip';
-import { Spectrum } from '../Spectrum';
+
+import { Pattern } from '../Pattern';
 import { parseDiffractogram } from '../parser/parser';
 
 /**
@@ -21,20 +22,20 @@ export function readBRML(binary, options = {}) {
 }
 
 /**
- * Creates a new XRD selement based on a BRML
+ * Creates a new XRD element based on a BRML
  * @param {binary} binary - binary
- * @return {Spectrum} - New class element with the given data
+ * @return {Pattern} - New class element with the given data
  */
 export async function fromBRML(text) {
-  let spectrum = new Spectrum();
-  let result = readBRML(text);
+  let pattern = new Pattern();
+  let result = await readBRML(text);
 
-  spectrum.add(result.data.x, result.data.y, 'twotheta', {
-    xLabel: '2 theta / degree',
-    yLabel: 'counts',
-    title: result.meta['Sample ID'],
-    meta: result.meta,
+  result.metadata.xLabel = '2 theta / degree';
+  result.metadata.yLabel = 'counts';
+
+  pattern.add(result.data.x, result.data.y, 'twotheta', {
+    metadata: result.metadata,
   });
 
-  return spectrum;
+  return pattern;
 }
