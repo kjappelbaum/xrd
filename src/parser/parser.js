@@ -49,6 +49,10 @@ export function parseDiffractogram(file) {
   const info = { ...adddata, ...diffractogram.metadata.info };
   diffractogram.metadata.info = info;
   diffractogram.metadata.xUnit = adddata.axes[0].unitBase;
+  if (diffractogram.metadata.xUnit === 'Degree') {
+    diffractogram.metadata.xUnit = '°';
+  }
+
   diffractogram.metadata.xLabel = adddata.axes[0].name;
 
   return diffractogram;
