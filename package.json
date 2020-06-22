@@ -47,7 +47,7 @@
     "jcampconverter": "^4.1.0",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
-    "rollup": "^1.31.0"
+    "rollup": "^2.18.0"
   },
   "dependencies": {
     "convert-to-jcamp": "^2.0.1",
