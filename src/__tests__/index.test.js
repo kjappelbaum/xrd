@@ -9,6 +9,7 @@ describe('xrdConverter', () => {
   const data = readFileSync(join(__dirname, '../../data/test.brml'));
   const dataXY = readFileSync(
     join(__dirname, '../../data/MG1-Cu2O-28_bg_subtracted.xy'),
+    'utf8',
   );
   it('check the output jcamp', async () => {
     const result = await xrdConverter(data);
