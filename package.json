@@ -1,6 +1,6 @@
 {
   "name": "xrd",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "description": "Convert XRD file to jcamp",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,6 +9,7 @@
     "src"
   ],
   "scripts": {
+    "build": "cheminfo-build --entry src/index.js --root XRD",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
     "prepublishOnly": "rollup -c",
@@ -38,21 +39,22 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
-    "eslint": "^6.8.0",
-    "eslint-config-cheminfo": "^2.0.4",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.7.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "jcampconverter": "^4.1.0",
-    "jest": "^25.1.0",
-    "prettier": "^1.19.1",
-    "rollup": "^1.31.0"
+    "@babel/plugin-transform-modules-commonjs": "^7.10.1",
+    "cheminfo-build": "^1.1.1",
+    "eslint": "^7.2.0",
+    "eslint-config-cheminfo": "^4.0.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^23.13.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jcampconverter": "^7.1.0",
+    "jest": "^26.0.1",
+    "prettier": "^2.0.5",
+    "rollup": "^2.16.1"
   },
   "dependencies": {
-    "convert-to-jcamp": "^2.0.1",
-    "fast-xml-parser": "^3.16.0",
-    "jcampconverter": "^4.1.0",
-    "jszip": "^3.2.2"
+    "convert-to-jcamp": "^3.1.0",
+    "fast-xml-parser": "^3.17.4",
+    "jcampconverter": "^7.1.0",
+    "jszip": "^3.5.0"
   }
 }

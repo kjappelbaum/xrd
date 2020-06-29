@@ -46,14 +46,12 @@ export function parseDiffractogram(file) {
 
   const diffractogram = getXYDiffractogram(data.DataRoutes.DataRoute.Datum);
 
-  const info = { ...adddata, ...diffractogram.metadata.info };
-  diffractogram.metadata.info = info;
-  diffractogram.metadata.xUnit = adddata.axes[0].unitBase;
-  if (diffractogram.metadata.xUnit === 'Degree') {
-    diffractogram.metadata.xUnit = '°';
-  }
+  diffractogram.meta = { ...adddata, ...diffractogram.meta };
 
-  diffractogram.metadata.xLabel = adddata.axes[0].name;
+  let label = adddata.axes[0].name.replace(/two/i, '2').replace(/theta/i, 'ϴ');
+  let unit = adddata.axes[0].unitBase.replace(/degree/i, '°');
+
+  diffractogram.info.xUnits = `${label} [${unit}]`;
 
   return diffractogram;
 }
@@ -79,18 +77,16 @@ function getXYDiffractogram(data) {
 
   const diffractogram = {
     data: { x: axis1, y: counts },
-    metadata: {
-      xUnit: '°',
-      yUnit: 'counts',
-      type: 'XRD pattern',
+    info: {
+      xUnits: '2ϴ [°]',
+      yUnits: 'counts',
+      dataType: 'XRD pattern',
       origin: 'Data converted from BRML using convert-to-jcamp',
-      info: {
-        xLabel: '2 theta',
-        yLabel: 'intensity',
-        axis2: axis2,
-        measuredTimePerStep: measuredTimePerStep,
-        plannedTimePerStep: plannedTimePerStep,
-      },
+    },
+    meta: {
+      axis2: axis2,
+      measuredTimePerStep: measuredTimePerStep,
+      plannedTimePerStep: plannedTimePerStep,
     },
   };
 
