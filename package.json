@@ -46,7 +46,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "jcampconverter": "^4.1.0",
     "jest": "^25.1.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.5",
     "rollup": "^2.18.1"
   },
   "dependencies": {
