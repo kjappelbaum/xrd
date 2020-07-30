@@ -52,7 +52,7 @@
     "rollup": "^2.16.1"
   },
   "dependencies": {
-    "convert-to-jcamp": "^3.1.0",
+    "convert-to-jcamp": "^4.2.0",
     "fast-xml-parser": "^3.17.4",
     "jcampconverter": "^7.1.0",
     "jszip": "^3.5.0"
